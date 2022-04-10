@@ -1,8 +1,6 @@
 .container{
-    width: 300vw;
-    
-    position: relative;
-    
+    width: 100vw;
+    position: relative; 
 }
 
 .album{
@@ -25,7 +23,7 @@
     font-size: 100px;
     color: whitesmoke;
     opacity: 0.5;
-    bottom: -500;
+    bottom: -600;
 }
 
 .container-icon__right{
@@ -33,6 +31,6 @@
     font-size: 100px;
     color: whitesmoke;
     opacity: 0.5;
-    bottom: -500;
-    left: 950;
+    bottom: -600;
+    left: 930;
 }
