@@ -17,7 +17,7 @@ body{
 
 .slider-container .animated{
     -webkit-transition: left .3s ease-in;
-    transition: left .3s ease-in;
+    transition: transform 0.5s ease-in;
 }
 
 
@@ -54,8 +54,6 @@ body{
     border-radius: 50%;
     background-position: center center;
     background-repeat: no-repeat;
-    -webkit-transition: all .3s ease-in;
-    transition: all .3s ease-in;
     color: whitesmoke;
     opacity: 0.5;
 }

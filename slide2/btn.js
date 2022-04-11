@@ -23,9 +23,9 @@ for(let a = 0; a < slideCount; a++){
 
 
 function goToSlide(idx){
+    currentIndex = idx;
     slideContainer.style.left= -100 * idx +'%';
     slideContainer.classList.add('animated');
-    currentIndex = idx;
 }
 
 function handlePrevClick(){
