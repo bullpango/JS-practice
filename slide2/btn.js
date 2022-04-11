@@ -1,24 +1,51 @@
-const leftBtn = document.querySelector('.container-icon__left');
-const rightBtn = document.querySelector('.container-icon__right');
-const container = document.querySelector('.container');
-const list = document.querySelectorAll('.album');
+const slidewrap = document.querySelector(".container");
+const slideContainer = document.querySelector(".slider-container");
+const slide = document.querySelectorAll('.slide');
+const navPrev = document.getElementById('prev');
+const navNext = document.getElementById('next');
+const slideCount = slide.length;
 
-const currenVL = 0;
-const imageVL = "img/img1.jpg";
+let currentIndex = 0;
+let slideHeight = 0;
 
-
-console.dir(list);
-
-function handleClickLeft(){
- 
+for(let i = 0; i < slideCount; i++){
+    if(slideHeight < slide[i].offsetHeight){
+   slideHeight = slide[i].offsetHeight;
+    } 
 }
 
-function handleClickRight(){
-    if(imageVL === currenVL){
-        imageVL.length + 1;
+slidewrap.style.height = slideHeight + 'px';
+slideContainer.style.height = slideHeight + 'px';
+
+for(let a = 0; a < slideCount; a++){
+    slide[a].style.left = a * 100 + '%'
+}
+
+
+function goToSlide(idx){
+    slideContainer.style.left= -100 * idx +'%';
+    slideContainer.classList.add('animated');
+    currentIndex = idx;
+}
+
+function handlePrevClick(){
+   
+    if(currentIndex == 0){
+        goToSlide(slideCount -1);
+    }else{
+        goToSlide(currentIndex -1)
     }
 }
 
-leftBtn.addEventListener('click', handleClickLeft);
-rightBtn.addEventListener('click', handleClickRight);
+function handleNextClick(){
+   
+if(currentIndex == slideCount -1){
+    goToSlide(0);
+}else{
+    goToSlide(currentIndex + 1 );
+}
+}
 
+
+navPrev.addEventListener('click',handlePrevClick);
+navNext.addEventListener('click',handleNextClick);
