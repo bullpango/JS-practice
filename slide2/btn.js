@@ -29,7 +29,6 @@ function goToSlide(idx){
 }
 
 function handlePrevClick(){
-   
     if(currentIndex == 0){
         goToSlide(slideCount -1);
     }else{
@@ -38,7 +37,6 @@ function handlePrevClick(){
 }
 
 function handleNextClick(){
-   
 if(currentIndex == slideCount -1){
     goToSlide(0);
 }else{
