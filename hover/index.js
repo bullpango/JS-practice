@@ -8,7 +8,6 @@ const bag = emoticon.firstElementChild;
 const message = emoticon.lastElementChild;
 const search = emoticon.childNodes[3];
 
-
 //펑션
 
 const superEventHandler ={
