@@ -1,7 +1,9 @@
 const iconBox = document.getElementsByClassName('bottom');
 const textBox = document.querySelector('.top');
-const mainText = textBox.querySelector('h1')
+const mainText = document.querySelector('h1');
+const goodsText =document.querySelector('h1').innerHTML;
 const emoticon =  iconBox.item(HTMLCollection);
+
 
 //이모티콘
 const bag = emoticon.firstElementChild;
@@ -10,22 +12,18 @@ const search = emoticon.childNodes[3];
 
 //펑션
 
-const superEventHandler ={
-bag: function(event){
-    event.preventDefault();
+const superEventHandler = {
+bag: function(){
     mainText.innerText = "구매하기";
 },
-search: function(event){
-    event.preventDefault();
+search: function(){
     mainText.innerText = "자세히 보기";
 },
-message: function(event){
-    event.preventDefault();
+message: function(){
     mainText.innerText = "문의하기";
 },
-leave: function(event){
-    event.preventDefault();
-    mainText.innerText = mainText;
+leave: function(){
+    mainText.innerText = goodsText;
 }
 };
 //이벤트
@@ -35,4 +33,3 @@ message.addEventListener("mouseover",superEventHandler.message);
 search.addEventListener("mouseover",superEventHandler.search);
 emoticon.addEventListener("mouseleave", superEventHandler.leave);
 
-Init();
