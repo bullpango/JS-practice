@@ -25,7 +25,7 @@ message: function(event){
 },
 leave: function(event){
     event.preventDefault();
-    mainText.innerText = "PS5";
+    mainText.innerText = mainText;
 }
 };
 //이벤트
