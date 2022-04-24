@@ -4,16 +4,37 @@ const toDoForm =document.getElementById('todo-form');
 const toDoInput = toDoForm.querySelector("#todo-form input");
 
 let toDos = [];
+let dones = [];
 
 function saveToDos(){
     localStorage.setItem("toDos", JSON.stringify(toDos));
 }
+
+function saveDones(){
+    localStorage.setItem("dones", JSON.stringify(dones));
+}
+
 
 function deleteTodos(event){
     const li = event.target.parentElement;
     li.remove();
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
     saveToDos();
+    saveDones();
+}
+
+function addToDone(toDos){
+    dones.push();
+}
+
+
+function changeToDone(event){
+    const btn = event.target.parentNode;
+    btn.remove(btn.id);
+    addToDone(btn);
+    paintDoneList(dones);
+    saveToDos();
+    saveDones();
 }
 
 function returnToDo(event){
@@ -37,17 +58,17 @@ function paintToDo(newTodo){
     toDoList.appendChild(li);
 }
 
-function paintDoneList(newTodo){
+function paintDoneList(dones){
     const li = document.createElement("li");
-    li.id = newTodo.id;
+    li.id = dones.id;
     const span = document.createElement("span");
+    span.innerText = dones.Text;
     const delButton = document.createElement("button");
     delButton.innerText ="❌"
     delButton.addEventListener('click', deleteTodos);
     const returnButton = document.createElement("button");
     returnButton.innerText ="🔄"
     returnButton.addEventListener('click', returnToDo);
-    span.innerText = newTodo.Text;
     li.appendChild(span);
     li.appendChild(delButton);
     li.appendChild(returnButton);
@@ -76,4 +97,12 @@ if(savedToDos !== null){
     const parsedToDos = JSON.parse(savedToDos);
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
+}
+
+const savedDones = localStorage.getItem("dones");
+
+if(savedDones !== null){
+    const parsedDones = JSON.parse(savedDones);
+    toDos = parsedDones;
+    parsedDones.forEach(paintDoneList);
 }
