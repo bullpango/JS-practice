@@ -3,8 +3,8 @@ const doneList = document.querySelector('#done-list');
 const toDoForm =document.getElementById('todo-form');
 const toDoInput = toDoForm.querySelector("#todo-form input");
 
-let toDos = [];
-let dones = [];
+let toDos,dones = [];
+
 
 function saveToDos(){
     localStorage.setItem("toDos", JSON.stringify(toDos));
@@ -19,21 +19,22 @@ function deleteTodos(event){
     const li = event.target.parentElement;
     li.remove();
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+    dones = dones.filter((dones) => dones.id !== parseInt(li.id));
     saveToDos();
     saveDones();
 }
 
 function addToDone(toDos){
-    dones.push();
+    dones.push(toDos);
 }
 
 
 function changeToDone(event){
     const btn = event.target.parentNode;
-    btn.remove(btn.id);
-    addToDone(btn);
+    btn.remove(btn);
+    addToDone(toDos);
     paintDoneList(dones);
-    saveToDos();
+
     saveDones();
 }
 
@@ -103,6 +104,6 @@ const savedDones = localStorage.getItem("dones");
 
 if(savedDones !== null){
     const parsedDones = JSON.parse(savedDones);
-    toDos = parsedDones;
+    dones = parsedDones;
     parsedDones.forEach(paintDoneList);
 }
